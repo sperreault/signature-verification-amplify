@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 import { Tabs, TabItem, Divider } from "@aws-amplify/ui-react";
-import { FileUploadExample } from "./components/FileUploadExample";
 
 const client = generateClient<Schema>();
 
@@ -36,9 +35,6 @@ function App() {
           </div>
         </TabItem>
         
-        <TabItem title="File Upload">
-          <FileUploadExample />
-        </TabItem>
       </Tabs>
       
       <Divider margin="2rem 0" />
