@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
+import { Tabs, TabItem, Divider } from "@aws-amplify/ui-react";
+import { FileUploadExample } from "./components/FileUploadExample";
 
 const client = generateClient<Schema>();
 
@@ -19,15 +21,30 @@ function App() {
 
   return (
     <main>
-      <h1>My todos</h1>
-      <button onClick={createTodo}>+ new</button>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.content}</li>
-        ))}
-      </ul>
+      <h1>Amplify React+Vite Demo</h1>
+      
+      <Tabs>
+        <TabItem title="Todos">
+          <div style={{ padding: "1rem" }}>
+            <h2>My todos</h2>
+            <button onClick={createTodo}>+ new</button>
+            <ul>
+              {todos.map((todo) => (
+                <li key={todo.id}>{todo.content}</li>
+              ))}
+            </ul>
+          </div>
+        </TabItem>
+        
+        <TabItem title="File Upload">
+          <FileUploadExample />
+        </TabItem>
+      </Tabs>
+      
+      <Divider margin="2rem 0" />
+      
       <div>
-        🥳 App successfully hosted. Try creating a new todo.
+        🥳 App successfully hosted with file upload capabilities.
         <br />
         <a href="https://docs.amplify.aws/react/start/quickstart/#make-frontend-updates">
           Review next step of this tutorial.
